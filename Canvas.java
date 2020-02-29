@@ -30,6 +30,15 @@ public class Canvas
         this(title, 300, 300, Color.white);
     }
 
+    // method created in Canvas to draw the Box for the ball to bounce in. 
+    // .drawRect found on https://docs.oracle.com/javase/7/docs/api/java/awt/Graphics.html 
+    public void drawRectangle(int x, int y, int width, int height)
+    { 
+    graphic.drawRect(x,y, width, height); //Draws the outline of the specified rectangle. 
+    canvas.repaint(); 
+     }
+
+    
     /**
      * Create a Canvas with default background color (white).
      * @param title  title to appear in Canvas Frame
@@ -125,6 +134,20 @@ public class Canvas
         fill(circle);
     }
 
+     /**
+     * Fill the internal dimensions of the given circle with the current 
+     * foreground color of the canvas.
+     * @param  xPos  The x-coordinate of the box center point
+     * @param  yPos  The y-coordinate of the box center point
+     * @param  diameter  The diameter of the box to be drawn
+     */
+    public void fillBox(int xPos, int yPos, int size)
+    {
+        Ellipse2D.Double square = new Ellipse2D.Double(xPos, yPos, size, size);
+        fill(square);
+    }
+    
+    
     /**
      * Fill the internal dimensions of the given rectangle with the current 
      * foreground color of the canvas. This is a convenience method. A similar 
