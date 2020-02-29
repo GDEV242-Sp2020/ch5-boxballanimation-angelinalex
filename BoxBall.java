@@ -81,7 +81,7 @@ public class BoxBall
        yPosition += ySpeed;
        xPosition += xSpeed; 
        
-       int r = diameter /2; 
+       int r = diameter; 
        
        if (xPosition - r - distance < 0 )
         {
@@ -139,17 +139,26 @@ public class BoxBall
         return r; 
     }
     
-    public int randomDiameter() 
+    public int randomDiameter(int newDiameter) 
     {
-       numberGenerated = randomNumbers.nextInt(25); 
-       int r1 = numberGenerated +1; 
+       numberGenerated = randomNumbers.nextInt(25)+1;
+      
+       int max = 10; 
+       int min = 25;
        
-       for ( int i = 0; i <10; i++) 
-       {
-           return r1; 
-        } 
+       if (numberGenerated <=25 && numberGenerated >=10) {
+           
+        newDiameter = numberGenerated; 
+        
+        }
+        else if (numberGenerated <10)
+        {
+        newDiameter = numberGenerated + (10 - numberGenerated); 
+        }
+      
+        return newDiameter; 
+         
        
-        return r1; 
 }
 
    public Color getColor()
