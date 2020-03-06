@@ -26,6 +26,7 @@ public class BoxBallDemo
     Color color; 
     private int numberGenerated; 
     Random randomNumbers = new Random();
+     private Random randomGen;
     
     private Color getColor()
     {
@@ -41,7 +42,7 @@ public class BoxBallDemo
     
     HashSet<BoxBall> balls = new HashSet<BoxBall>(); 
     
-    private Random randomGen;
+   
     
     /**
      * Create a BoxBallDemo object. Creates a fresh canvas and makes it visible.
@@ -88,10 +89,8 @@ public class BoxBallDemo
      
      for (int i = 0; i < numberOfBalls; i ++)
      {
-         int x = randomPosition(); 
-         int y = randomPosition(); 
-         
-         BoxBall boxBall = new BoxBall(x, y, randomDiameter(), getColor(), boxWidth, boxHeight, myCanvas);
+        
+         BoxBall boxBall = new BoxBall(xPos, yPos, randomDiameter(), getColor(), boxWidth, boxHeight, myCanvas);
          
          balls.add(boxBall);
          
@@ -102,25 +101,28 @@ public class BoxBallDemo
 
  public int randomDiameter() 
     {
+       
        numberGenerated = randomNumbers.nextInt(25); 
-       int r1 = numberGenerated +1; 
+       int r1 = numberGenerated +1;
+       int r2 = (10-r1) + 10; 
        
-       for ( int i = 0; i <10; i++) 
-       {
-           return r1; 
-        } 
-       
-        return r1; 
+       if (numberGenerated <10)
+    {
+        return r2;
+    }
+    else {
+        return r1;
+    } 
 }
 
-   private int randomPosition()
+ 
+     private int randomPosition()
    {
        int pos = (int) (boxHeight);
        
        return randomGen.nextInt(pos); 
        
     }
-   
    
     
 }

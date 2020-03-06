@@ -28,17 +28,19 @@ public class BoxBall
     private final int width;
     private final int height;
     private Canvas canvas;
-    private int distance = 10; 
+    private int distance = 30; // so box doesn't chip 
     private int xSpeed; 
     private int ySpeed;
     private int numberGenerated; 
     Random randomNumbers = new Random();
     
     
-     
+     // This is the constructor for the Box ball 
     
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor, int boxWidth, int boxHeight, Canvas boxCanvas) 
     {
+    xPos= xPosition;
+    yPos = yPosition; 
     diameter = ballDiameter; 
     color = ballColor;
     width = boxWidth;
@@ -47,7 +49,8 @@ public class BoxBall
     xSpeed = randomSpeed(); 
     ySpeed =  randomSpeed(); 
    
-    
+    yPos = randomNumbers.nextInt(500); // gives random position limited to 500 for x and y
+    xPos = randomNumbers.nextInt(500);
     
     if (xPos >= boxWidth)
         xPosition = xPos - distance;
@@ -81,7 +84,7 @@ public class BoxBall
        yPosition += ySpeed;
        xPosition += xSpeed; 
        
-       int r = diameter; 
+       int r = diameter+5; 
        
        if (xPosition - r - distance < 0 )
         {
@@ -107,6 +110,8 @@ public class BoxBall
                    
                 }
         
+       
+                
         draw(); 
         
 
@@ -139,6 +144,10 @@ public class BoxBall
         return r; 
     }
     
+    
+    //extra credit
+   // gives random diameter 
+   
     public int randomDiameter(int newDiameter) 
     {
        numberGenerated = randomNumbers.nextInt(25)+1;
@@ -161,6 +170,7 @@ public class BoxBall
        
 }
 
+    // gives random color 
    public Color getColor()
     {
     
@@ -173,6 +183,6 @@ public class BoxBall
     return randomColor;
     } 
     
-    
+   
     
 }
