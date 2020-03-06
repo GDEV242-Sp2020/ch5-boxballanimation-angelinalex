@@ -50,7 +50,9 @@ public class BouncingBall
         groundPosition = groundPos;
         canvas = drawingCanvas;
     }
-
+ 
+    
+    
     /**
      * Draw this ball at its current position onto the canvas.
      **/
